@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/k8tw0nq5aq6vuy6p?svg=true)](https://ci.appveyor.com/project/Lekon999/a3)
