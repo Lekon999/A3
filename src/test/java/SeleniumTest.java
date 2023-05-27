@@ -1,3 +1,13 @@
+//import io.github.bonigarcia.wdm.WebDriverManager;
+//import org.junit.jupiter.api.AfterEach;
+//import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -5,43 +15,37 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.BeforeClass;
-
 class SeleniumTest {
     private static WebDriver driver;
     private org.openqa.selenium.By By;
 
-    @BeforeClass
-    public static void Setup() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
-    }
 
-    @BeforeAll
-    static void setUpAll() {
-        //WebDriverManager.chromedriver().setup();
-        System.setProperty("web-driver.chrome.driver", "./driver/win/chromedriver.exe");
-    }
+            @BeforeAll
+            static void setDriver() {
+                WebDriverManager.chromedriver().setup();
+            }
 
-    @BeforeEach
-    void setUp() {
-        driver = new ChromeDriver();
-    }
+            @BeforeEach
+            void setUp() {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--headless");
+                driver = new ChromeDriver(options);
+                driver.get("http://localhost:9999/");
+            }
 
-    @AfterEach
-    void tearDown() {
-        driver.quit();
-        driver = null;
-    }
+            @AfterEach
+            void setDown() {
+                driver.quit();
+                driver = null;
+            }
 
-    @Test
-    void shouldTest1() throws InterruptedException {
+            @Test
+            void shouldTest1() throws InterruptedException {
 
-        driver.get("http://localhost:9999/");
-        Thread.sleep(50000);
+                driver.get("http://localhost:9999/");
+                Thread.sleep(50000);
 //        {
 //
 //            List<WebElement> inputs = driver.findElements(By.tagName("input"));
@@ -53,8 +57,8 @@ class SeleniumTest {
 //            String actual = driver.findElement(By.className("order-success")).getText();
 //            assertEquals(expected, actual);
 
-    }
-}
+            }
+        }
 
 
 
