@@ -45,6 +45,17 @@ public class SeleniumTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void shouldReturnSuccessPage2() {
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванова-Петрова Мария");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79022009911");
+        driver.findElement(By.cssSelector(".checkbox__box")).click();
+        driver.findElement(By.cssSelector(".button__text")).click();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, actual);
+    }
+
 }
 
 
